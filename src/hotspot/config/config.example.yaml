@@ -1,0 +1,194 @@
+# AI 热点收集系统配置文件
+
+# 通用设置
+general:
+  timezone: "Asia/Shanghai"
+  language: "zh-CN"
+  run_time: "09:00"  # 每天运行时间
+  lookback_hours: 24  # 回溯时间（小时）
+
+# AI 关键词过滤（全局）
+ai_keywords:
+  - "AI"
+  - "GPT"
+  - "Claude"
+  - "LLM"
+  - "Llama"
+  - "ChatGPT"
+  - "machine learning"
+  - "deep learning"
+  - "neural"
+  - "transformer"
+  - "diffusion"
+  - "stable diffusion"
+  - "midjourney"
+  - "openai"
+  - "anthropic"
+  - "google ai"
+  - "gemini"
+  - "bard"
+  - "copilot"
+  - "人工智能"
+  - "大模型"
+  - "神经网络"
+
+# 数据源配置
+sources:
+  reddit:
+    enabled: true
+    use_rss: true  # 使用 RSS，无需 API
+    subreddits:
+      - "MachineLearning"
+      - "LocalLLaMA"
+      - "OpenAI"
+      - "StableDiffusion"
+      - "ClaudeAI"
+      - "ArtificialInteligence"
+      - "ChatGPT"
+      # 新增AI相关subreddit
+      - "learnmachinelearning"
+      - "artificial"
+      - "singularity"
+      - "MLQuestions"
+      - "LanguageTechnology"
+      - "computervision"
+      - "deeplearning"
+      - "GPT3"
+    min_score: 50  # 降低门槛以获取更多内容
+    sort_by: "hot"
+    ai_keywords_required: true  # 必须包含 AI 关键词
+
+  youtube:
+    enabled: true
+    use_rss: true  # 使用 RSS，无需 API
+    channels:
+      - "UCbfYPyITQ-7l4upoX8nvctg"  # Two Minute Papers
+      - "UCfzlCWGWYyIQ0aLC5w48gBQ"  # Sentdex
+      - "UCUHW94eEFW7hkUMVaZz4eDg"  # Matt Wolfe
+      - "UC7cs8q-gJRlGwj4A8OmCmXg"  # AI Explained
+      - "UCZHmQk67mSJgfCCTn7xBfew"  # Yannic Kilcher
+      - "UCMLtBahI5DMrt0NPvDSoIRQ"  # AI News (TheAIGRID)
+      - "UCkGvUEt8iQLmq3aJIMjT2qQ"  # AI Advantage
+      - "UCNqVL5ljzVvdCVg_hgb3LPQ"  # WorldofAI
+    min_views: 10000  # 降低门槛以获取更多视频
+    ai_keywords_required: true  # 必须是 AI 相关
+
+  twitter:
+    enabled: false  # ⚠️ 暂时禁用 - RSSHub实例问题
+    use_rss: true  # 使用 RSSHub RSS 订阅
+    rsshub_instance: "https://rsshub.app"
+    accounts:
+      - "sama"
+      - "AnthropicAI"
+      - "OpenAI"
+      - "ylecun"
+      - "karpathy"
+      - "NVIDIAAIDev"
+      - "hardmaru"
+      - "goodfellow_ian"
+    ai_keywords_required: true  # 必须是 AI 相关
+    use_nitter: false  # 不使用 Nitter
+
+  # 🆕 即刻（Jike）
+  jike:
+    enabled: false  # ⚠️ 暂时禁用 - RSSHub路由失效
+    rsshub_instance: "https://rsshub.app"
+    topics:
+      - type: "topic"
+        id: "553870e8e4b0cd23ec0f09ad"
+        name: "人工智能"
+      - type: "topic"
+        id: "54dffb40e4b0a09aad0a468b"
+        name: "科技"
+      - type: "topic"
+        id: "5a17dfe2f9c92a0014c3f995"
+        name: "机器学习"
+    users: []  # 可选：添加特定用户ID
+    min_likes: 20  # 最低点赞数
+    ai_keywords_required: true
+
+  # 🆕 小红书（Xiaohongshu）
+  xiaohongshu:
+    enabled: false  # ⚠️ 暂时禁用 - RSSHub路由失效
+    rsshub_instance: "https://rsshub.app"
+    use_keyword_search: true  # 使用关键词搜索模式
+    keywords:
+      - "ChatGPT"
+      - "AI工具"
+      - "人工智能"
+      - "大模型"
+      - "AI绘画"
+    users: []  # 用户模式暂时禁用,使用关键词搜索
+    min_likes: 100  # 最低点赞数
+    ai_keywords_required: true
+
+# AI 分类配置
+categories:
+  - name: "AI 模型发布和更新"
+    icon: "🤖"
+    keywords: ["GPT", "Claude", "Llama", "model", "release", "update", "发布", "Gemini", "Bard"]
+
+  - name: "AI 硬件（芯片、设备）"
+    icon: "💻"
+    keywords: ["GPU", "chip", "hardware", "NVIDIA", "AMD", "TPU", "芯片", "H100", "H200"]
+
+  - name: "AI 公司动态"
+    icon: "🏢"
+    keywords: ["funding", "acquisition", "IPO", "CEO", "融资", "收购", "OpenAI", "Anthropic", "Google"]
+
+  - name: "AI 应用和工具"
+    icon: "🛠️"
+    keywords: ["tool", "app", "plugin", "extension", "应用", "工具", "Midjourney", "Stable Diffusion"]
+
+# AI 总结配置（Claude API）
+ai_summary:
+  enabled: false  # ⚠️ 暂时禁用 - API模型/速率限制问题
+  model: "claude-sonnet-4-5"
+  max_tokens: 500
+  temperature: 0.7
+  prompt_template: |
+    请用中文总结以下 AI 相关内容，提取关键点：
+
+    标题: {title}
+    来源: {source}
+    内容: {content}
+
+    请提供：
+    1. 一句话概括（20字以内）
+    2. 3-5个关键点（每个10字以内）
+    3. 重要性评分（1-5星）
+
+# Obsidian 配置
+obsidian:
+  vault_path: "/Users/zhuyansen/Documents/Obsidian Vault"
+  daily_notes_path: "AI-Hotspots/Daily"
+  template_path: "../templates/daily_template.md"
+  tags: ["ai-hotspots", "daily", "auto-generated"]
+
+# NotebookLM 配置
+notebooklm:
+  enabled: true
+  auto_sync: true
+  notebook_name: "AI Weekly Digest"
+  generate_weekly_podcast: true  # 每周生成播客
+  podcast_day: "sunday"  # 周日生成
+
+  # 图片生成配置（使用 intelligent-prompt-generator skill）
+  generate_images: true
+  image_prompt_skill: "intelligent-prompt-generator"
+  images_per_day: 10  # 每天生成10张最重要话题的图片
+  image_style: "design"  # portrait, cross-domain, design
+
+# 数据质量过滤
+filters:
+  min_engagement_score: 10  # 最低互动分数
+  spam_keywords: ["buy now", "click here", "limited offer", "广告", "推广"]
+  language_whitelist: ["en", "zh"]
+  ai_content_only: true  # 只保留 AI 相关内容
+
+# 趋势分析
+analytics:
+  enabled: true
+  track_growth: true  # 追踪增长趋势
+  sentiment_analysis: true  # 情感分析
+  top_n: 10  # 每日 Top N 热点

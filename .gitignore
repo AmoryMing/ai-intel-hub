@@ -1,0 +1,15 @@
+venv/
+*.pyc
+__pycache__/
+.env
+data/
+output/
+voice/
+*.docx
+.omc/
+*.log
+*.db
+*.bak
+*.bak2
+node_modules/
+.DS_Store
