@@ -74,6 +74,34 @@ Multi-source aggregation from HackerNews, WeChat public accounts, 36Kr, and othe
 - **Image Generator**: Visual cards for top daily stories
 - **NotebookLM**: Weekly podcast generation from curated intelligence
 
+## MR Watcher / 代码审查守望者
+
+MR Watcher is an AI-powered code review agent that monitors Pull Requests in real time and provides automated assistance throughout the review lifecycle.
+
+MR Watcher 是一个 AI 驱动的代码审查智能体，实时监控 Pull Request 并在整个审查周期中提供自动化协助。
+
+**Key Features / 核心功能：**
+
+- **Auto Review / 自动审查**：PR 创建或更新时，自动分析 diff 并发现潜在问题（格式、逻辑、安全风险）
+- **CI Monitor / CI 监控**：监听 CI 状态，失败时自动分析错误日志并建议修复方案
+- **Comment Response / 评论响应**：响应 reviewer 评论，按要求自动修复代码并推送
+- **Smart Notification / 智能通知**：重要事件（CI 失败、被 approve、需要修改）自动邮件通知作者
+- **Code Fix / 代码修复**：对于明确的修改请求，直接在分支上修复代码并提交
+
+**Workflow / 工作流：**
+
+```
+PR Event (comment / CI / push)
+        │
+        ▼
+  MR Watcher Agent
+        │
+        ├─→ Analyze & Summarize (分析摘要)
+        ├─→ Post Comment (回复评论)
+        ├─→ Fix Code (修复代码)
+        └─→ Notify Author (通知作者)
+```
+
 ## Quick Start / 快速开始
 
 ### 1. Clone and setup
